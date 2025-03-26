@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import ScrollAnimation from '../components/ScrollAnimation';
 
 const HomeContainer = styled.section`
-  min-height: 100vh;
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 80px;
+  justify-content: center;
+  padding-top: 0;
   position: relative;
   overflow: hidden;
 `;
@@ -80,97 +80,21 @@ const HeroText = styled.p`
   }
 `;
 
-const LinkButton = styled.a`
-  display: inline-block;
-  padding: 15px 30px;
-  margin: 10px;
-  border-radius: 4px;
-  font-weight: bold;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  width: 200px;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
-  
-  @media (max-width: 768px) {
-    width: 80%;
-    margin: 5px auto;
-  }
-`;
-
-const PrimaryButton = styled(LinkButton)`
-  background-color: var(--primary);
-  color: white;
-  border: none;
-  
-  &:hover {
-    background-color: var(--primary-dark);
-  }
-`;
-
-const SecondaryButton = styled(LinkButton)`
-  background-color: transparent;
-  color: var(--text);
-  border: 1px solid var(--border);
-  
-  &:hover {
-    border-color: var(--primary);
-    color: var(--primary);
-  }
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 30px 0;
+const ButtonPlaceholder = styled.div`
+  height: 60px;
+  margin: 0;
+  padding: 0;
+  display: block;
   width: 100%;
-  max-width: 300px;
-  
-  @media (max-width: 768px) {
-    width: 100%;
-  }
-`;
-
-const SocialContainer = styled.div`
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  margin-top: 20px;
-`;
-
-const SocialLink = styled.a`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: rgba(64, 160, 86, 0.1);
-  color: var(--primary);
-  transition: all 0.3s ease;
-  
-  &:hover {
-    background-color: var(--primary);
-    color: white;
-    transform: translateY(-3px);
-  }
+  max-width: 450px;
 `;
 
 const Home: React.FC = () => {
-  
-  const handleNavigation = (path: string) => {
-    window.location.href = `/portfolio-jean/#${path}`;
-  };
-  
   return (
     <HomeContainer id="home">
       <BackgroundShape />
       <div className="container">
-        <HomeContent>
+        <HomeContent className="HomeContent">
           <ScrollAnimation direction="down">
             <SmallText>Olá, eu sou</SmallText>
           </ScrollAnimation>
@@ -189,60 +113,10 @@ const Home: React.FC = () => {
             </HeroText>
           </ScrollAnimation>
 
-          <ButtonContainer>
-            <PrimaryButton 
-              href="/portfolio-jean/#/portfolio"
-              role="button"
-              aria-label="Ver Projetos"
-              onTouchStart={() => {}}
-              onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
-                e.preventDefault();
-                handleNavigation('/portfolio');
-              }}
-            >
-              Ver Projetos
-            </PrimaryButton>
-            
-            <SecondaryButton 
-              href="/portfolio-jean/#/contact"
-              role="button"
-              aria-label="Contato"
-              onTouchStart={() => {}}
-              onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
-                e.preventDefault();
-                handleNavigation('/contact');
-              }}
-            >
-              Contato
-            </SecondaryButton>
-          </ButtonContainer>
+          {/* Placeholder para os botões injetados lado a lado */}
+          <ButtonPlaceholder id="button-placeholder" />
           
-          <ScrollAnimation direction="up" delay={0.8}>
-            <SocialContainer>
-              <SocialLink 
-                href="https://github.com/seu-usuario" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                onTouchStart={() => {}}
-              >
-                <FaGithub />
-              </SocialLink>
-              <SocialLink 
-                href="https://www.linkedin.com/in/seu-usuario/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                onTouchStart={() => {}}
-              >
-                <FaLinkedin />
-              </SocialLink>
-              <SocialLink 
-                href="mailto:beralb@tutanota.com"
-                onTouchStart={() => {}}
-              >
-                <FaEnvelope />
-              </SocialLink>
-            </SocialContainer>
-          </ScrollAnimation>
+          {/* Ícones de redes sociais removidos da página inicial */}
         </HomeContent>
       </div>
     </HomeContainer>

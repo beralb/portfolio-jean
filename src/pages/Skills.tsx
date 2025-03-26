@@ -113,73 +113,73 @@ const skills: Skill[] = [
   {
     id: 1,
     name: 'HTML5',
-    level: 95,
+    level: 100,
     icon: <FaHtml5 />
   },
   {
     id: 2,
     name: 'CSS3',
-    level: 90,
+    level: 100,
     icon: <FaCss3Alt />
   },
   {
     id: 3,
     name: 'JavaScript',
-    level: 85,
+    level: 100,
     icon: <FaJs />
   },
   {
     id: 4,
     name: 'React',
-    level: 80,
+    level: 100,
     icon: <FaReact />
   },
   {
     id: 5,
     name: 'Node.js',
-    level: 75,
+    level: 100,
     icon: <FaNodeJs />
   },
   {
     id: 6,
     name: 'Python',
-    level: 70,
+    level: 100,
     icon: <FaPython />
   },
   {
     id: 7,
     name: 'Git',
-    level: 85,
+    level: 100,
     icon: <FaGitAlt />
   },
   {
     id: 8,
     name: 'WordPress',
-    level: 90,
+    level: 100,
     icon: <FaWordpress />
   },
   {
     id: 9,
     name: 'Bootstrap',
-    level: 85,
+    level: 100,
     icon: <FaBootstrap />
   },
   {
     id: 10,
     name: 'Jest',
-    level: 75,
+    level: 100,
     icon: <SiJest />
   },
   {
     id: 11,
     name: 'TypeScript',
-    level: 70,
+    level: 100,
     icon: <SiTypescript />
   },
   {
     id: 12,
     name: 'NPM',
-    level: 80,
+    level: 100,
     icon: <FaNpm />
   }
 ];

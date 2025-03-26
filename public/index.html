@@ -48,6 +48,95 @@
         }
       }(window.location))
     </script>
+    <style>
+      /* Estilos para os botões de navegação puros */
+      .pure-nav-button {
+        display: inline-block;
+        padding: 15px 0;
+        margin: 0 10px;
+        border-radius: 4px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        width: 180px;
+        cursor: pointer;
+        font-family: 'Inter', sans-serif;
+        transition: all 0.3s ease;
+      }
+      .pure-nav-primary {
+        background-color: #40A056;
+        color: white !important;
+        border: none;
+      }
+      .pure-nav-primary:hover {
+        background-color: #358a47;
+        transform: translateY(-2px);
+      }
+      .pure-nav-secondary {
+        background-color: transparent;
+        color: #333 !important;
+        border: 1px solid #ddd;
+      }
+      .pure-nav-secondary:hover {
+        border-color: #40A056;
+        color: #40A056 !important;
+        transform: translateY(-2px);
+      }
+      .pure-nav-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        width: 100%;
+        max-width: 450px;
+        position: relative;
+        z-index: 9999;
+      }
+      
+      /* Garantir que o footer fique sempre visível sem necessidade de rolagem */
+      footer {
+        position: static;
+        background-color: rgb(20, 20, 20);
+        z-index: 100;
+        padding: 15px 0;
+        box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+      }
+      
+      /* Estilos básicos para o footer */
+      footer .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      
+      /* Estilo para a div principal do footer */
+      footer div[class^="Footer"] {
+        display: flex;
+        justify-content: space-between; /* Coloca o texto à esquerda e os ícones à direita */
+        align-items: center; /* Centraliza verticalmente */
+        width: 100%;
+      }
+      
+      /* Estilo para a navegação e lista de ícones sociais */
+      footer nav ul {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      
+      footer nav ul li {
+        margin-left: 15px;
+      }
+      
+      /* Ajuste para remover o espaço extra */
+      .spacer-removed {
+        display: none !important;
+      }
+    </style>
   </head>
   <body>
     <noscript>Você precisa habilitar o JavaScript para visualizar este site.</noscript>
@@ -62,5 +151,108 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+      // Script que injetará links HTML puros na página após o carregamento
+      document.addEventListener('DOMContentLoaded', function() {
+        // Esperar um pouco para garantir que o React já renderizou
+        setTimeout(function() {
+          // Encontrar o placeholder específico para os botões
+          var placeholder = document.getElementById('button-placeholder');
+          var targetElement = document.querySelector('.HomeContent');
+          
+          if (placeholder) {
+            // Criar container para botões
+            var navContainer = document.createElement('div');
+            navContainer.className = 'pure-nav-container';
+            
+            // Criar botão para Portfolio
+            var portfolioButton = document.createElement('a');
+            portfolioButton.className = 'pure-nav-button pure-nav-primary';
+            portfolioButton.href = 'https://beralb.github.io/portfolio-jean/#/portfolio';
+            portfolioButton.innerText = 'Ver Projetos';
+            
+            // Criar botão para Contato
+            var contactButton = document.createElement('a');
+            contactButton.className = 'pure-nav-button pure-nav-secondary';
+            contactButton.href = 'https://beralb.github.io/portfolio-jean/#/contact';
+            contactButton.innerText = 'Contato';
+            
+            // Adicionar botões ao container
+            navContainer.appendChild(portfolioButton);
+            navContainer.appendChild(contactButton);
+            
+            // Substituir o placeholder pelos botões
+            placeholder.parentNode.replaceChild(navContainer, placeholder);
+          } else if (targetElement) {
+            // Caso de fallback se o placeholder não for encontrado
+            console.log("Placeholder não encontrado, usando fallback");
+            
+            // Criar container para botões
+            var navContainer = document.createElement('div');
+            navContainer.className = 'pure-nav-container';
+            
+            // Criar botão para Portfolio
+            var portfolioButton = document.createElement('a');
+            portfolioButton.className = 'pure-nav-button pure-nav-primary';
+            portfolioButton.href = 'https://beralb.github.io/portfolio-jean/#/portfolio';
+            portfolioButton.innerText = 'Ver Projetos';
+            
+            // Criar botão para Contato
+            var contactButton = document.createElement('a');
+            contactButton.className = 'pure-nav-button pure-nav-secondary';
+            contactButton.href = 'https://beralb.github.io/portfolio-jean/#/contact';
+            contactButton.innerText = 'Contato';
+            
+            // Adicionar botões ao container
+            navContainer.appendChild(portfolioButton);
+            navContainer.appendChild(contactButton);
+            
+            // Adicionar ao final do conteúdo (sem procurar pela seção social que foi removida)
+            targetElement.appendChild(navContainer);
+          }
+          
+          // Simplificação do footer
+          var footer = document.querySelector('footer');
+          if (footer) {
+            // Remover estilos anteriores
+            var allFooterElements = footer.querySelectorAll('*');
+            allFooterElements.forEach(function(el) {
+              el.removeAttribute('style');
+            });
+            
+            // Aplicar novos estilos simplificados
+            var footerDiv = footer.querySelector('div[class^="Footer"]');
+            if (footerDiv) {
+              footerDiv.style.display = 'flex';
+              footerDiv.style.justifyContent = 'space-between';
+              footerDiv.style.alignItems = 'center';
+              footerDiv.style.width = '100%';
+            }
+            
+            // Ajustar a navegação
+            var nav = footer.querySelector('nav');
+            if (nav) {
+              nav.style.marginLeft = 'auto'; // Empurra a navegação para a direita
+            }
+            
+            // Ajustar a lista de ícones
+            var ul = footer.querySelector('ul');
+            if (ul) {
+              ul.style.display = 'flex';
+              ul.style.listStyle = 'none';
+              ul.style.margin = '0';
+              ul.style.padding = '0';
+            }
+            
+            // Ajustar os itens da lista
+            var lis = footer.querySelectorAll('li');
+            lis.forEach(function(li) {
+              li.style.marginLeft = '15px';
+            });
+          }
+          
+        }, 500); // Reduzindo o tempo de espera para 500ms
+      });
+    </script>
   </body>
 </html>
