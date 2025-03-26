@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import logoImage from '../assets/images/portfolio/logo-pq.jpg';
 import ThemeToggle from './ThemeToggle';
@@ -140,6 +140,7 @@ const NavControls = styled.div`
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -149,10 +150,15 @@ const Header: React.FC = () => {
     setIsMenuOpen(false);
   };
 
+  const handleNavigation = (path: string) => {
+    navigate(path);
+    closeMenu();
+  };
+
   return (
     <HeaderContainer>
       <Nav>
-        <Logo to="/">
+        <Logo onClick={() => handleNavigation('/')} to="/" style={{ cursor: 'pointer' }}>
           <img src={logoImage} alt="Jean Paul Bernhardt Logo" />
         </Logo>
 
@@ -166,11 +172,11 @@ const Header: React.FC = () => {
         <Overlay $isOpen={isMenuOpen} onClick={closeMenu} />
 
         <NavLinks $isOpen={isMenuOpen}>
-          <li><NavLink to="/" onClick={closeMenu}>Home</NavLink></li>
-          <li><NavLink to="/about" onClick={closeMenu}>Sobre</NavLink></li>
-          <li><NavLink to="/portfolio" onClick={closeMenu}>Portfólio</NavLink></li>
-          <li><NavLink to="/skills" onClick={closeMenu}>Habilidades</NavLink></li>
-          <li><NavLink to="/contact" onClick={closeMenu}>Contato</NavLink></li>
+          <li><NavLink as="span" onClick={() => handleNavigation('/')} style={{ cursor: 'pointer' }}>Home</NavLink></li>
+          <li><NavLink as="span" onClick={() => handleNavigation('/about')} style={{ cursor: 'pointer' }}>Sobre</NavLink></li>
+          <li><NavLink as="span" onClick={() => handleNavigation('/portfolio')} style={{ cursor: 'pointer' }}>Portfólio</NavLink></li>
+          <li><NavLink as="span" onClick={() => handleNavigation('/skills')} style={{ cursor: 'pointer' }}>Habilidades</NavLink></li>
+          <li><NavLink as="span" onClick={() => handleNavigation('/contact')} style={{ cursor: 'pointer' }}>Contato</NavLink></li>
         </NavLinks>
       </Nav>
     </HeaderContainer>

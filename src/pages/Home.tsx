@@ -1,13 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import ScrollAnimation from '../components/ScrollAnimation';
 
 const HomeContainer = styled.section`
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   padding-top: 80px;
   position: relative;
@@ -20,95 +19,9 @@ const HomeContent = styled.div`
   gap: 1.5rem;
   max-width: 650px;
   z-index: 1;
-`;
-
-const Title = styled(motion.h1)`
-  font-size: 4rem;
-  font-weight: 700;
-  line-height: 1.1;
-  margin-bottom: 1rem;
-  color: var(--dark);
-
-  span {
-    color: var(--primary);
-  }
-
-  @media (max-width: 768px) {
-    font-size: 3rem;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 2.5rem;
-  }
-`;
-
-const Subtitle = styled(motion.p)`
-  font-size: 1.5rem;
-  color: var(--text-light);
-  margin-bottom: 2rem;
-
-  @media (max-width: 768px) {
-    font-size: 1.25rem;
-  }
-`;
-
-const ButtonGroup = styled(motion.div)`
-  display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
-
-  @media (max-width: 480px) {
-    flex-direction: column;
-    width: 100%;
-  }
-`;
-
-const PrimaryButton = styled(Link)`
-  display: inline-flex;
+  text-align: center;
+  width: 100%;
   align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.875rem 1.75rem;
-  background-color: var(--primary);
-  color: white;
-  border-radius: 4px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(37, 99, 235, 0.25);
-
-  &:hover {
-    background-color: var(--primary-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 8px rgba(37, 99, 235, 0.3);
-  }
-
-  @media (max-width: 480px) {
-    width: 100%;
-  }
-`;
-
-const SecondaryButton = styled(Link)`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.875rem 1.75rem;
-  background-color: transparent;
-  color: var(--text);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-
-  &:hover {
-    border-color: var(--primary);
-    color: var(--primary);
-    transform: translateY(-2px);
-  }
-
-  @media (max-width: 480px) {
-    width: 100%;
-  }
 `;
 
 const BackgroundShape = styled.div`
@@ -123,7 +36,6 @@ const BackgroundShape = styled.div`
   z-index: 0;
 `;
 
-// Novos componentes estilizados
 const SmallText = styled.p`
   font-size: 1.1rem;
   font-weight: 500;
@@ -161,7 +73,6 @@ const HeroText = styled.p`
   color: var(--text-light);
   line-height: 1.8;
   margin-bottom: 2rem;
-  max-width: 600px;
   
   @media (max-width: 768px) {
     font-size: 1.1rem;
@@ -169,20 +80,66 @@ const HeroText = styled.p`
   }
 `;
 
-const ButtonContainer = styled.div`
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 2.5rem;
+const LinkButton = styled.a`
+  display: inline-block;
+  padding: 15px 30px;
+  margin: 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  width: 200px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
   
   @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 0.75rem;
+    width: 80%;
+    margin: 5px auto;
+  }
+`;
+
+const PrimaryButton = styled(LinkButton)`
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  
+  &:hover {
+    background-color: var(--primary-dark);
+  }
+`;
+
+const SecondaryButton = styled(LinkButton)`
+  background-color: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+  
+  &:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
+  width: 100%;
+  max-width: 300px;
+  
+  @media (max-width: 768px) {
+    width: 100%;
   }
 `;
 
 const SocialContainer = styled.div`
   display: flex;
   gap: 1rem;
+  justify-content: center;
+  margin-top: 20px;
 `;
 
 const SocialLink = styled.a`
@@ -204,6 +161,11 @@ const SocialLink = styled.a`
 `;
 
 const Home: React.FC = () => {
+  
+  const handleNavigation = (path: string) => {
+    window.location.href = `/portfolio-jean/#${path}`;
+  };
+  
   return (
     <HomeContainer id="home">
       <BackgroundShape />
@@ -226,23 +188,57 @@ const Home: React.FC = () => {
               Criando sites profissionais e soluções web personalizadas.
             </HeroText>
           </ScrollAnimation>
-          
-          <ScrollAnimation direction="up" delay={0.6}>
-            <ButtonContainer>
-              <PrimaryButton to="/portfolio">Ver Projetos</PrimaryButton>
-              <SecondaryButton to="/contact">Contato</SecondaryButton>
-            </ButtonContainer>
-          </ScrollAnimation>
+
+          <ButtonContainer>
+            <PrimaryButton 
+              href="/portfolio-jean/#/portfolio"
+              role="button"
+              aria-label="Ver Projetos"
+              onTouchStart={() => {}}
+              onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                e.preventDefault();
+                handleNavigation('/portfolio');
+              }}
+            >
+              Ver Projetos
+            </PrimaryButton>
+            
+            <SecondaryButton 
+              href="/portfolio-jean/#/contact"
+              role="button"
+              aria-label="Contato"
+              onTouchStart={() => {}}
+              onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                e.preventDefault();
+                handleNavigation('/contact');
+              }}
+            >
+              Contato
+            </SecondaryButton>
+          </ButtonContainer>
           
           <ScrollAnimation direction="up" delay={0.8}>
             <SocialContainer>
-              <SocialLink href="https://github.com/seu-usuario" target="_blank" rel="noopener noreferrer">
+              <SocialLink 
+                href="https://github.com/seu-usuario" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                onTouchStart={() => {}}
+              >
                 <FaGithub />
               </SocialLink>
-              <SocialLink href="https://www.linkedin.com/in/seu-usuario/" target="_blank" rel="noopener noreferrer">
+              <SocialLink 
+                href="https://www.linkedin.com/in/seu-usuario/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                onTouchStart={() => {}}
+              >
                 <FaLinkedin />
               </SocialLink>
-              <SocialLink href="mailto:beralb@tutanota.com">
+              <SocialLink 
+                href="mailto:beralb@tutanota.com"
+                onTouchStart={() => {}}
+              >
                 <FaEnvelope />
               </SocialLink>
             </SocialContainer>

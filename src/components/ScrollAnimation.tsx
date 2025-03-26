@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useMemo } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useEffect } from 'react';
@@ -50,12 +50,14 @@ const ScrollAnimation: React.FC<ScrollAnimationProps> = ({
     }
   };
 
-  const initial = {
+  // Usa useMemo para evitar recriações do objeto a cada renderização
+  const initial = useMemo(() => ({
     opacity: 0,
     ...getDirectionOffset(),
-  };
+  }), [direction, distance]);
 
-  const animate = {
+  // Usa useMemo para evitar recriações do objeto a cada renderização
+  const animate = useMemo(() => ({
     opacity: 1,
     x: 0,
     y: 0,
@@ -64,7 +66,7 @@ const ScrollAnimation: React.FC<ScrollAnimationProps> = ({
       delay: delay,
       ease: 'easeOut',
     },
-  };
+  }), [duration, delay]);
 
   useEffect(() => {
     if (inView) {
