@@ -102,14 +102,13 @@ const Home: React.FC = () => {
           <ScrollAnimation direction="left" delay={0.2}>
             <HeroTitle>
               Jean Paul Bernhardt
-              <span>Desenvolvedor Web</span>
+              <span>Desenvolvedor Web Full Stack</span>
             </HeroTitle>
           </ScrollAnimation>
           
           <ScrollAnimation direction="right" delay={0.4}>
             <HeroText>
-              Desenvolvedor web com experiência em WordPress e React. 
-              Criando sites profissionais e soluções web personalizadas.
+              Transformando ideias em experiências digitais excepcionais. Especialista em desenvolvimento web moderno com React, WordPress e tecnologias JavaScript. Combinando design atraente e código eficiente para criar soluções personalizadas que impulsionam negócios e encantam usuários.
             </HeroText>
           </ScrollAnimation>
 
