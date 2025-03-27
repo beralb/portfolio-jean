@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval';
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      img-src 'self' data: https:;
+      font-src 'self' https://fonts.gstatic.com;
+      connect-src 'self';
+      frame-src 'none';
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self';
+      upgrade-insecure-requests
+    ">
+    <title>Jean Paul Bernhardt | Desenvolvedor Full Stack</title>
+    
+    <!-- Meta tags para SEO -->
+    <meta name="description" content="Portfolio de Jean Paul Bernhardt - Desenvolvedor Full Stack especializado em criar experiências digitais excepcionais com React, TypeScript e WordPress." />
+    <meta name="keywords" content="desenvolvedor full stack, react, typescript, wordpress, web development, portfolio" />
+    <meta name="author" content="Jean Paul Bernhardt" />
+    
+    <!-- Meta tags para redes sociais -->
+    <meta property="og:title" content="Jean Paul Bernhardt | Desenvolvedor Full Stack" />
+    <meta property="og:description" content="Portfolio de Jean Paul Bernhardt - Desenvolvedor Full Stack especializado em criar experiências digitais excepcionais." />
+    <meta property="og:type" content="website" />
+    
+    <style>
+      /* Ensure dark mode styles are applied immediately */
+      :root.dark {
+        background-color: #1A1A1A;
+        color: #E9DFCE;
+      }
+    </style>
+    <script>
+      // Force dark mode unless explicitly set to false
+      if (localStorage.getItem('darkMode') !== 'false') {
+        localStorage.setItem('darkMode', 'true');
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Bodoni+Moda:opsz@6..96&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #E9DFCE;
+    --foreground: #1A1A1A;
+    --separator: rgba(26, 26, 26, 0.1);
+    --soft-light: #E9DFCE;
+    --gradient-start: #1A1A1A;
+    --gradient-end: #666666;
+  }
+
+  :root[class~="dark"] {
+    --background: #1A1A1A;
+    --foreground: #E9DFCE;
+    --separator: rgba(233, 223, 206, 0.1);
+    --soft-light: #554C40;
+    --gradient-start: #E9DFCE;
+    --gradient-end: #8B8178;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-primary font-sans antialiased min-h-screen;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  section {
+    @apply relative;
+  }
+
+  section:not(:last-child)::after {
+    content: '';
+    @apply absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-px;
+    background-color: var(--separator);
+  }
+
+  .heading-xl {
+    @apply font-display text-6xl sm:text-7xl lg:text-8xl font-normal leading-tight tracking-wider;
+  }
+
+  .heading-lg {
+    @apply text-4xl md:text-5xl font-display font-normal tracking-wider;
+  }
+
+  .heading-md {
+    @apply text-3xl md:text-4xl font-display font-normal tracking-wider;
+  }
+
+  .heading-sm {
+    @apply text-2xl md:text-3xl font-display font-normal tracking-wider;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(to right, var(--gradient-start) 30%, var(--gradient-end));
+  }
+}
