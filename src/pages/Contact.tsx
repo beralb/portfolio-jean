@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { FaEnvelope, FaMapMarkerAlt, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaEnvelope, FaMapMarkerAlt, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
 import ScrollAnimation from '../components/ScrollAnimation';
 
 const ContactContainer = styled.section`
@@ -109,28 +109,7 @@ const ContactInfoLink = styled.a`
 `;
 
 const SocialLinks = styled.div`
-  display: flex;
-  gap: 1rem;
   margin-top: 2rem;
-`;
-
-const SocialLink = styled.a`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: rgba(64, 160, 86, 0.1);
-  color: var(--primary);
-  font-size: 1.25rem;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background-color: var(--primary);
-    color: white;
-    transform: translateY(-3px);
-  }
 `;
 
 const ContactFormWrapper = styled.div`
@@ -216,16 +195,6 @@ const SubmitButton = styled(motion.button)`
   }
 `;
 
-const SuccessMessage = styled(motion.div)`
-  background-color: rgba(16, 185, 129, 0.1);
-  border: 1px solid var(--success);
-  color: var(--success);
-  padding: 1rem;
-  border-radius: 4px;
-  text-align: center;
-  margin-top: 1rem;
-`;
-
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -234,7 +203,6 @@ const Contact: React.FC = () => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -243,24 +211,32 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
     
-    // Simulate form submission
+    // Preparar os dados para o mailto
+    const recipientEmail = 'beralb@tutanota.com';
+    const formattedSubject = encodeURIComponent(`Contato via Website: ${formData.subject}`);
+    const formattedBody = encodeURIComponent(
+      `Nome: ${formData.name}\n` +
+      `Email: ${formData.email}\n\n` +
+      `Mensagem:\n${formData.message}\n\n` +
+      `Enviado do formulário de contato do website.`
+    );
+    
+    // Criar o link mailto e abrir no cliente de email
+    const mailtoLink = `mailto:${recipientEmail}?subject=${formattedSubject}&body=${formattedBody}`;
+    window.location.href = mailtoLink;
+    
+    // Limpar o formulário após 1 segundo (para dar tempo do link mailto ser processado)
+    setIsSubmitting(true);
     setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSuccess(true);
       setFormData({
         name: '',
         email: '',
         subject: '',
         message: ''
       });
-      
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setIsSuccess(false);
-      }, 5000);
-    }, 1500);
+      setIsSubmitting(false);
+    }, 1000);
   };
 
   return (
@@ -307,22 +283,48 @@ const Contact: React.FC = () => {
               </ContactInfoTable>
 
               <SocialLinks>
-                <SocialLink 
-                  href="https://github.com/beralb" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  aria-label="GitHub"
-                >
-                  <FaGithub />
-                </SocialLink>
-                <SocialLink 
-                  href="https://linkedin.com/in/yourprofile" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                >
-                  <FaLinkedin />
-                </SocialLink>
+                <ContactInfoTable>
+                  <tbody>
+                    <ContactInfoRow>
+                      <ContactInfoIconCell>
+                        <IconWrapper>
+                          <FaWhatsapp />
+                        </IconWrapper>
+                      </ContactInfoIconCell>
+                      <ContactInfoContentCell>
+                        <ContactInfoTitle>WhatsApp</ContactInfoTitle>
+                        <ContactInfoText>
+                          <ContactInfoLink 
+                            href="https://wa.me/5585986050157" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                          >
+                            Enviar mensagem
+                          </ContactInfoLink>
+                        </ContactInfoText>
+                      </ContactInfoContentCell>
+                    </ContactInfoRow>
+                    <ContactInfoRow>
+                      <ContactInfoIconCell>
+                        <IconWrapper>
+                          <FaLinkedin />
+                        </IconWrapper>
+                      </ContactInfoIconCell>
+                      <ContactInfoContentCell>
+                        <ContactInfoTitle>LinkedIn</ContactInfoTitle>
+                        <ContactInfoText>
+                          <ContactInfoLink 
+                            href="https://linkedin.com/in/yourprofile" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                          >
+                            Ver perfil
+                          </ContactInfoLink>
+                        </ContactInfoText>
+                      </ContactInfoContentCell>
+                    </ContactInfoRow>
+                  </tbody>
+                </ContactInfoTable>
               </SocialLinks>
             </ContactInfo>
           </ScrollAnimation>
@@ -383,19 +385,9 @@ const Contact: React.FC = () => {
                     disabled={isSubmitting}
                     whileTap={{ scale: 0.95 }}
                   >
-                    {isSubmitting ? 'Enviando...' : 'Enviar Mensagem'}
+                    {isSubmitting ? 'Abrindo cliente de email...' : 'Enviar Mensagem'}
                   </SubmitButton>
                 </ScrollAnimation>
-
-                {isSuccess && (
-                  <SuccessMessage
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0 }}
-                  >
-                    Mensagem enviada com sucesso! Entraremos em contato em breve.
-                  </SuccessMessage>
-                )}
               </ContactForm>
             </ContactFormWrapper>
           </ScrollAnimation>
