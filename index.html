@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Script de redirecionamento condicional -->
     <script>
-      // Verifica se está em produção (não localhost)
+      // Verifica se está em produção (não localhost) e não está já no caminho correto
       if (window.location.hostname !== 'localhost' && 
           !window.location.hostname.includes('127.0.0.1') &&
-          window.location.origin !== 'https://beralb.github.io/portfolio-jean/') {
+          window.location.pathname !== '/portfolio-jean/') {
         window.location.href = 'https://beralb.github.io/portfolio-jean/';
       }
     </script>
