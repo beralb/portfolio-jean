@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
 
 // Importando as imagens
-import portfolio01 from '/projects/portfolio-01.png';
-import portfolio02 from '/projects/portfolio-02.png';
-import portfolio03 from '/projects/portfolio-03.png';
-import portfolio04 from '/projects/portfolio-04.png';
+import portfolio01 from '../projects/portfolio-01.png';
+import portfolio02 from '../projects/portfolio-02.png';
+import portfolio03 from '../projects/portfolio-03.png';
+import portfolio04 from '../projects/portfolio-04.png';
 
 interface Project {
   id: number;
