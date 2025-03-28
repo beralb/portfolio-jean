@@ -108,19 +108,7 @@ const Projects = () => {
             ))}
           </div>
 
-          <div className="text-center mt-12">
-            <motion.a
-              href="https://github.com/jeanwilker"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-lg font-medium text-primary hover:opacity-70 transition-opacity"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Ver mais projetos
-              <span className="text-2xl">🔥</span>
-            </motion.a>
-          </div>
+          {/* Removendo o link "Ver mais projetos" */}
         </motion.div>
       </div>
     </section>

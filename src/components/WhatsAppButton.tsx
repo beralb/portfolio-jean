@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FiMessageSquare } from 'react-icons/fi';
+import { FaWhatsapp } from 'react-icons/fa';
 
 const WhatsAppButton = () => {
   const handleClick = () => {
@@ -13,11 +13,10 @@ const WhatsAppButton = () => {
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       onClick={handleClick}
-      className="fixed bottom-28 sm:bottom-8 right-8 z-50 bg-primary text-light dark:bg-light dark:text-primary px-6 py-3 rounded-full shadow-lg hover:bg-primary/80 dark:hover:bg-light/90 transition-colors flex items-center gap-2 border border-light"
+      className="fixed bottom-20 sm:bottom-6 right-8 z-50 bg-primary text-light dark:bg-light dark:text-primary w-14 h-14 rounded-full shadow-lg hover:bg-primary/80 dark:hover:bg-light/90 transition-colors flex items-center justify-center border border-light"
       aria-label="Contato via WhatsApp"
     >
-      <FiMessageSquare className="text-2xl" />
-      <span className="font-medium">WhatsApp</span>
+      <FaWhatsapp className="text-2xl" />
     </motion.button>
   );
 };

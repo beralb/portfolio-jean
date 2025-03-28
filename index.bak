@@ -4,6 +4,15 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Script de redirecionamento condicional -->
+    <script>
+      // Verifica se está em produção (não localhost) e não está já no caminho correto
+      if (window.location.hostname !== 'localhost' && 
+          !window.location.hostname.includes('127.0.0.1') &&
+          window.location.pathname !== '/portfolio-jean/') {
+        window.location.href = 'https://beralb.github.io/portfolio-jean/';
+      }
+    </script>
     <meta http-equiv="Content-Security-Policy" content="
       default-src 'self';
       script-src 'self' 'unsafe-inline' 'unsafe-eval';
@@ -48,4 +57,4 @@
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
-</html> 
+</html>

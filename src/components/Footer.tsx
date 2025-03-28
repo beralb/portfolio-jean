@@ -18,11 +18,11 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="py-12 bg-background">
+    <footer className="pt-8 pb-32 sm:pb-8 bg-background">
       <div className="container">
         <div className="max-w-4xl mx-auto text-center">
           {/* Social Links */}
-          <div className="flex justify-center gap-6 mb-8">
+          <div className="flex justify-center gap-6 mb-6">
             {socialLinks.map((link, index) => (
               <motion.a
                 key={index}
@@ -40,7 +40,7 @@ const Footer = () => {
           </div>
 
           {/* Copyright */}
-          <div className="text-primary/60 text-sm">
+          <div className="text-primary/60 text-sm mt-2">
             <p>© {currentYear} Jean Paul Bernhardt. Todos os direitos reservados.</p>
           </div>
         </div>

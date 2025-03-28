@@ -4,24 +4,15 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: './',
-  build: {
-    assetsDir: 'assets',
-    rollupOptions: {
-      output: {
-        assetFileNames: (assetInfo) => {
-          const name = assetInfo.name || '';
-          if (name.endsWith('.png')) {
-            return 'assets/images/[name][extname]'
-          }
-          return 'assets/[name][extname]'
-        }
-      }
-    }
+  base: process.env.NODE_ENV === 'production' ? '/' : '/',
+  server: {
+    port: 5173,
+    strictPort: true,
+    open: true
   },
-  resolve: {
-    alias: {
-      '/projects': '/public/projects'
-    }
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    sourcemap: true
   }
 })
