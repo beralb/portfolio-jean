@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion';
-import { FiMail } from 'react-icons/fi';
+import { FaWhatsapp } from 'react-icons/fa';
 
 const Contact = () => {
-  const email = 'jeanpaul.webdev@gmail.com';
+  const whatsappNumber = '5585986050157';
+  const message = 'Olá! Vim pelo seu portfólio e gostaria de conversar sobre um projeto.';
 
-  const handleEmailClick = () => {
-    window.location.href = `mailto:${email}?subject=Contato via Portfolio`;
+  const handleWhatsAppClick = () => {
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
   };
 
   return (
@@ -29,13 +30,13 @@ const Contact = () => {
           </div>
 
           <motion.button
-            onClick={handleEmailClick}
+            onClick={handleWhatsAppClick}
             className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-light dark:bg-light dark:text-primary rounded-full font-medium hover:bg-primary/90 dark:hover:bg-light/90 transition-colors"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <FiMail className="text-xl" />
-            Enviar Email
+            <FaWhatsapp className="text-xl" />
+            Conversar no WhatsApp
           </motion.button>
         </motion.div>
       </div>

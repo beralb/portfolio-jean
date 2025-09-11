@@ -13,10 +13,11 @@ const WhatsAppButton = () => {
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       onClick={handleClick}
-      className="fixed bottom-20 sm:bottom-6 right-8 z-50 bg-primary text-light dark:bg-light dark:text-primary w-14 h-14 rounded-full shadow-lg hover:bg-primary/80 dark:hover:bg-light/90 transition-colors flex items-center justify-center border border-light"
+      className="fixed bottom-20 sm:bottom-6 right-8 z-50 inline-flex items-center gap-3 px-8 py-4 bg-green-500 text-white rounded-full font-medium hover:bg-green-600 transition-colors shadow-lg"
       aria-label="Contato via WhatsApp"
     >
-      <FaWhatsapp className="text-2xl" />
+      <FaWhatsapp className="text-xl" />
+      Fale Comigo
     </motion.button>
   );
 };

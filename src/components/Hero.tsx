@@ -36,7 +36,7 @@ const Hero = () => {
             </a>
             <a
               href="#contato"
-              className="px-8 py-4 border-2 border-primary dark:border-light rounded-full font-medium hover:bg-primary hover:text-light dark:hover:bg-light dark:hover:text-primary transition-colors"
+              className="px-8 py-4 border-2 border-primary dark:border-light text-light dark:text-primary rounded-full font-medium hover:bg-primary hover:text-light dark:hover:bg-light dark:hover:text-primary transition-colors"
             >
               Entrar em Contato
             </a>
@@ -45,19 +45,21 @@ const Hero = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 1,
-          repeat: Infinity,
-          repeatType: "reverse",
-          duration: 1
-        }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <FiArrowDown className="text-3xl animate-bounce" />
-      </motion.div>
+      {/* Updated scroll indicator positioning */}
+      <div className="absolute inset-x-0 bottom-8 flex justify-center">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            delay: 1,
+            repeat: Infinity,
+            repeatType: "reverse",
+            duration: 1
+          }}
+        >
+          <FiArrowDown className="text-3xl animate-bounce" />
+        </motion.div>
+      </div>
 
       {/* Background Elements */}
       <div className="absolute inset-0 -z-10">

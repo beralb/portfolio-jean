@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
 
-// Importando as imagens
-import portfolio01 from '../projects/portfolio-01.png';
-import portfolio02 from '../projects/portfolio-02.png';
-import portfolio03 from '../projects/portfolio-03.png';
-import portfolio04 from '../projects/portfolio-04.png';
+// URLs das imagens otimizadas na pasta public (formato WebP)
+const portfolio01 = '/images/portfolio/portfolio-01.webp';
+const portfolio02 = '/images/portfolio/portfolio-02.webp';
+const portfolio03 = '/images/portfolio/portfolio-03.webp';
+const portfolio04 = '/images/portfolio/portfolio-04.webp';
 
 interface Project {
   id: number;
@@ -16,8 +16,25 @@ interface Project {
 }
 
 const projects: Project[] = [
+
   {
     id: 1,
+    title: 'Dra. Larissa Richter',
+    description: 'Site profissional para otorrinolaringologista, com foco em atendimento pediátrico, design moderno e sistema de agendamento.',
+    tags: ['React', 'UI/UX', 'Responsive Design', 'SEO'],
+    image: portfolio02,
+    link: 'https://dralarissarichter.com.br/'
+  },
+  {
+    id: 2,
+    title: 'Dr. Yago Dias de Souza',
+    description: 'Landing page para a especialidade de tratamento e cirurgia de sinusite.',
+    tags: ['React', 'UI,UX', 'SEO', 'Responsive Design'],
+    image: portfolio03,
+    link: 'https://otorrinojoseyago.com.br/landings/sinusite/'
+  },
+  {
+    id: 3,
     title: 'Dra. Brena Marques Odontologia',
     description: 'Site profissional para consultório odontológico, desenvolvido em WordPress com design personalizado e sistema de agendamento.',
     tags: ['WordPress', 'CSS', 'Responsive Design', 'SEO'],
@@ -25,28 +42,12 @@ const projects: Project[] = [
     link: 'https://brenamarquesodontologia.com.br/'
   },
   {
-    id: 2,
-    title: 'Dr. José Francisco do Rêgo',
-    description: 'Site profissional para médico, com área de blog e sistema de agendamentos.',
-    tags: ['WordPress', 'PHP', 'JavaScript', 'Custom Theme'],
-    image: portfolio02,
-    link: 'https://www.drjosefcorego.com.br/'
-  },
-  {
-    id: 3,
-    title: 'Dr. Victor Hugo Vascular',
-    description: 'Website para cirurgião vascular com informações sobre procedimentos e agendamento online.',
-    tags: ['WordPress', 'UI/UX', 'Responsive Design', 'SEO'],
-    image: portfolio03,
-    link: 'https://victorhugovascular.com.br/'
-  },
-  {
     id: 4,
-    title: 'Ortopedista São Paulo',
-    description: 'Portal especializado para clínica de ortopedia com informações sobre serviços, procedimentos e atendimento.',
+    title: 'Dr. Victor Hugo Soares',
+    description: 'Portal especializado para clínica de varizes com informações sobre serviços, procedimentos e atendimento.',
     tags: ['WordPress', 'PHP', 'SEO', 'Responsive Design'],
     image: portfolio04,
-    link: 'https://ortopedistasaopaulo.com.br/'
+    link: 'https://victorhugovascular.com.br/'
   }
 ];
 
@@ -76,11 +77,12 @@ const Projects = () => {
               >
                 <a href={project.link} target="_blank" rel="noopener noreferrer" className="block">
                   {/* Project Image */}
-                  <div className="aspect-[4/3] overflow-hidden">
+                  <div className="aspect-[4/3] overflow-hidden bg-gray-100 dark:bg-gray-800">
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                      className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
 
