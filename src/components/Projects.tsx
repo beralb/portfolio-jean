@@ -43,11 +43,11 @@ const projects: Project[] = [
   },
   {
     id: 4,
-    title: 'Dr. Victor Hugo Soares',
-    description: 'Portal especializado para clínica de varizes com informações sobre serviços, procedimentos e atendimento.',
+    title: 'MedVision BTS',
+    description: 'Centro Oftalmológico especializado em cirurgia de catarata e refrativa.',
     tags: ['WordPress', 'PHP', 'SEO', 'Responsive Design'],
     image: portfolio04,
-    link: 'https://victorhugovascular.com.br/'
+    link: 'https://www.medvisionbts.com.br/'
   }
 ];
 
