@@ -9,7 +9,7 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist -r https://github.com/beralb/beralb.github.io.git -b main",
+    "deploy": "gh-pages -d dist -r git@github.com:beralb/beralb.github.io.git -b main",
     "deploy:new": "gh-pages -d dist -r https://github.com/jeanbernhardt/jeanbernhardt.github.io.git -b main"
   },
   "dependencies": {
