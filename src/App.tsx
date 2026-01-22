@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import Chatbot from './components/Chatbot';
 import { ThemeProvider } from './context/ThemeContext';
 
 // Lazy load components não críticos
@@ -32,6 +33,7 @@ function App() {
       <Suspense fallback={null}>
         <WhatsAppButton />
       </Suspense>
+      <Chatbot />
     </ThemeProvider>
   );
 }
